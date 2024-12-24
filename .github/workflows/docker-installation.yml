@@ -6,8 +6,10 @@ name: docker installation
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch: 
-
+  # workflow_dispatch: 
+  push:
+    branches:
+      - main
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -34,6 +36,6 @@ jobs:
           mkdir -p ~/.ssh
           # ssh-keyscan -H $EC2_PUBLIC_IP >> ~/.ssh/known_hosts
           ssh -i "main_key.pem" ubuntu@$EC2_PUBLIC_IP << EOF
-          sudo apt update
-          sudo apt install nginx -y
+          sudo apt update -y
+          docker pull postgres
           EOF
