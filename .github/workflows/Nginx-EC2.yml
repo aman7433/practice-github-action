@@ -23,14 +23,14 @@ jobs:
       # Runs a single command using the runners shell
       - name: Decode and Use EC2 Private Key
         env:
-          EC2_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }
+          EC2_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
         run: |
           echo "$EC2_PRIVATE_KEY" | base64 -d > main_key.pem
           chmod 400 main_key.pem
 
       - name: Install Nginx on EC2
         env:
-          EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }
+          EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
         run: |
           ssh -i "main_key.pem" ubuntu@$EC2_PUBLIC_IP << EOF
           sudo apt update
