@@ -21,6 +21,17 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      # Clone another repository (Private or Public)
+      - name: Clone another repository
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}  # Personal Access Token (PAT) stored as a secret
+        run: |
+          # Configure git to use the PAT for authentication
+          git config --global url."https://$GH_PAT@github.com/".insteadOf "https://github.com/"
+          
+          # Now clone the other repository (change this to the repository you want to clone)
+          git clone https://github.com/aman7433/private-repo-for-cicd.git
+
 
       # Runs a single command using the runners shell
       - name: Decode and Use EC2 Private Key
