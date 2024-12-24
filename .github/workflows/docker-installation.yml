@@ -29,12 +29,10 @@ jobs:
           # Configure git to use the PAT for authentication
           git config --global url."https://$GH_PAT@github.com/".insteadOf "https://github.com/"
                   
-          sudo mkdir -p private_repo
-          
-          cd private_repo
-          
+          mkdir -p /home/ubuntu/private-repo
+
           # Now clone the other repository (change this to the repository you want to clone)
-          git clone https://github.com/aman7433/private-repo-for-cicd.git
+          git clone https://github.com/aman7433/private-repo-for-cicd.git /home/ubuntu/private-repo
 
          
 
