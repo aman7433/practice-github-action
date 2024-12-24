@@ -37,5 +37,5 @@ jobs:
           ssh-keyscan -H $EC2_PUBLIC_IP >> ~/.ssh/known_hosts
           ssh -i "main_key.pem" ubuntu@$EC2_PUBLIC_IP << EOF
           sudo apt update -y
-          docker pull postgres
+          sudo docker pull postgres
           EOF
