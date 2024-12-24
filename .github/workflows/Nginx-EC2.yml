@@ -29,10 +29,10 @@ jobs:
           chmod 400 main_key.pem
 
       - name: Install Nginx on EC2
-        env:
-          EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
+        # env:
+        #   EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
         run: |
-          ssh -i "main_key.pem" ubuntu@$EC2_PUBLIC_IP << EOF
+          ssh -i "main_key.pem" ubuntu@3.91.102.110 << EOF
           sudo apt update
           sudo apt install -y nginx
           EOF
