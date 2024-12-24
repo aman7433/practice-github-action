@@ -1,0 +1,18 @@
+<?php
+// Get the private IP address
+$private_ip = $_SERVER['SERVER_ADDR'];
+
+// Get the public IP address by querying an external service
+$public_ip = file_get_contents('http://api.ipinfo.io/ip');
+?>
+
+<html>
+<head>
+    <title>IP Information</title>
+</head>
+<body>
+    <h1>IP Information</h1>
+    <p><strong>Private IP:</strong> <?php echo $private_ip; ?></p>
+    <p><strong>Public IP:</strong> <?php echo $public_ip; ?></p>
+</body>
+</html>
